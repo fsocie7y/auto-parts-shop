@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "shop",
     "crispy_forms",
+    "shop",
 ]
 
 MIDDLEWARE = [
@@ -52,6 +52,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "auto_parts_shop.urls"
+
+LOGIN_REDIRECT_URL = "home/"
 
 TEMPLATES = [
     {
@@ -68,6 +70,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 WSGI_APPLICATION = "auto_parts_shop.wsgi.application"
 
