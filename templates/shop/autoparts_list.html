@@ -3,44 +3,40 @@
 
 {% block content %}
   <h1>
-    Manufacturer List
+    Auto parts List
   </h1>
 {#    <form action="" method="get" class="form-inline">#}
 {#        {{ manufacturer_search_form|crispy }}#}
 {#        <input type="submit" value="🔍✨" class="btn btn-info">#}
 {#    </form>#}
-  {% if manufacturer_list %}
+  {% if autoparts_list %}
     <table class="table">
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Country</th>
-        <th>Amount parts</th>
+        <th>Price</th>
+        <th>Manufacturer</th>
       </tr>
 
-      {% for manufacturer in manufacturer_list %}
+      {% for autopart in autoparts_list %}
         <tr>
           <td>
-              {{ manufacturer.id }}
+              {{ autopart.id }}
           </td>
           <td>
-              {{ manufacturer.name }}
+              {{ autopart.part_name }}
           </td>
           <td>
-              {{ manufacturer.country }}
+              {{ autopart.price }}
           </td>
           <td>
-              {% if manufacturer.autopart_set.count > 0 %}
-              {{ manufacturer.autopart_set.count }}
-              {% else %}
-              Haven`t auto-parts yet...
-              {% endif %}
+              {{ autopart.manufacturer.name }}
           </td>
         </tr>
       {% endfor %}
     </table>
 
   {% else %}
-      <p>There are no manufacturers in the service.</p>
+      <p>There are no items in the service.</p>
   {% endif %}
 {% endblock %}

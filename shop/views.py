@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views import View, generic
 
 from shop.forms import NewUserForm
-from shop.models import Manufacturer
+from shop.models import Manufacturer, AutoPart
 
 
 def index(request):
@@ -37,4 +37,12 @@ class ManufacturerListView(generic.ListView):
     context_object_name = "manufacturer_list"
     template_name = "shop/manufacturer_list.html"
     queryset = Manufacturer.objects.all()
+    paginate_by = 10
+
+
+class AutopartListView(generic.ListView):
+    model = AutoPart
+    context_object_name = "autoparts_list"
+    template_name = "shop/autoparts_list.html"
+    queryset = AutoPart.objects.all()
     paginate_by = 10

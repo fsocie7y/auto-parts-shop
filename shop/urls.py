@@ -4,7 +4,7 @@ from shop.views import (
     index,
     LogoutView,
     SignUpView,
-    ManufacturerListView
+    ManufacturerListView, AutopartListView
 )
 
 urlpatterns = [
@@ -23,6 +23,11 @@ urlpatterns = [
         "manufacturers/",
         ManufacturerListView.as_view(),
         name="manufacturer-list",
+    ),
+    path(
+        "auto-parts/",
+        AutopartListView.as_view(),
+        name="autopart-list",
     ),
 ]
 
