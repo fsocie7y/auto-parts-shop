@@ -1,7 +1,11 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView
-from shop.views import index, LogoutView, SignUpView
-
+from shop.views import (
+    index,
+    LogoutView,
+    SignUpView,
+    ManufacturerListView
+)
 
 urlpatterns = [
     path("", index, name="index"),
@@ -15,6 +19,11 @@ urlpatterns = [
     ),
     path("logout/", LogoutView.as_view(), name='logout'),
     path("register/", SignUpView.as_view(), name="register"),
+    path(
+        "manufacturers/",
+        ManufacturerListView.as_view(),
+        name="manufacturer-list",
+    ),
 ]
 
 app_name = "shop"

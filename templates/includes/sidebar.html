@@ -6,4 +6,7 @@
     <li class="list-group-item"><a href="{% url 'shop:login'%}?next={{request.path}}">Sing In</a></li>
     <li class="list-group-item"><a href="{% url 'shop:register'%}?next={{request.path}}">Sing Up</a></li>
   {% endif %}
+
+  <li class="list-group-item"><a href="{% url 'shop:index' %}">Home</a></li>
+  <li class="list-group-item"><a href="{% url 'shop:manufacturer-list' %}">All manufacturers</a></li>
 </ul>

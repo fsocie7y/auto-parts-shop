@@ -2,10 +2,10 @@ from django.contrib.auth import logout
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views import View
-from django.views.generic import CreateView
+from django.views import View, generic
 
 from shop.forms import NewUserForm
+from shop.models import Manufacturer
 
 
 def index(request):
@@ -19,7 +19,7 @@ class LogoutView(View):
         return render(request, "registration/logged_out.html")
 
 
-class SignUpView(SuccessMessageMixin, CreateView):
+class SignUpView(SuccessMessageMixin, generic.CreateView):
     template_name = "registration/register.html"
     success_url = reverse_lazy('shop:login')
     form_class = NewUserForm
@@ -30,3 +30,11 @@ class SignUpView(SuccessMessageMixin, CreateView):
         context["success_message"] = self.success_message
 
         return context
+
+
+class ManufacturerListView(generic.ListView):
+    model = Manufacturer
+    context_object_name = "manufacturer_list"
+    template_name = "shop/manufacturer_list.html"
+    queryset = Manufacturer.objects.all()
+    paginate_by = 10
