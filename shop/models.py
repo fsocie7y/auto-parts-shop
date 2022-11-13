@@ -36,9 +36,8 @@ class Customer(AbstractUser):
 
 
 class Order(models.Model):
-    order_number = models.IntegerField(auto_created=True)
     auto_parts = models.ManyToManyField(to=AutoPart, related_name="orders")
     customers = models.ManyToManyField(to=Customer, related_name="orders")
 
     def __str__(self):
-        return f"Order number: {self.order_number}"
+        return f"Order number: {self.id}"

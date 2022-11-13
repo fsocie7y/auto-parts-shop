@@ -16,3 +16,29 @@ class NewUserForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class ManufacturerSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search by name..."
+            }
+        )
+    )
+
+
+class AutopartsSearchForm(forms.Form):
+    part_name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search by name..."
+            }
+        )
+    )

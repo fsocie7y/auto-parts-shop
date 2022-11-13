@@ -5,10 +5,10 @@
   <h1>
     Auto parts List
   </h1>
-{#    <form action="" method="get" class="form-inline">#}
-{#        {{ manufacturer_search_form|crispy }}#}
-{#        <input type="submit" value="🔍✨" class="btn btn-info">#}
-{#    </form>#}
+    <form action="" method="get" class="form-inline">
+        {{ autoparts_search_form|crispy }}
+        <input type="submit" value="🔍✨" class="btn btn-info">
+    </form>
   {% if autoparts_list %}
     <table class="table">
       <tr>
@@ -16,6 +16,7 @@
         <th>Name</th>
         <th>Price</th>
         <th>Manufacturer</th>
+        <th></th>
       </tr>
 
       {% for autopart in autoparts_list %}
@@ -31,6 +32,11 @@
           </td>
           <td>
               {{ autopart.manufacturer.name }}
+          </td>
+          <td>
+            <a href="{% url 'shop:buy' pk=autopart.id %}" class="btn btn-success link-to-page">
+            Buy
+            </a>
           </td>
         </tr>
       {% endfor %}

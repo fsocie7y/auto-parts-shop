@@ -21,16 +21,17 @@
 
                     {% block sidebar %}
                         {% include "includes/sidebar.html" %}
+                        <br>
+                        {% block pagination %}
+                            {% include "includes/pagination.html" %}
+                        {% endblock %}
+
                     {% endblock %}
 
                 </div>
                 <div class="col-sm-10 ">
 
                     {% block content %}
-                    {% endblock %}
-
-                    {% block pagination %}
-                        {% include "includes/pagination.html" %}
                     {% endblock %}
 
                 </div>

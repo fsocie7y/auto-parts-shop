@@ -1,11 +1,13 @@
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View, generic
 
-from shop.forms import NewUserForm
-from shop.models import Manufacturer, AutoPart
+from shop.forms import NewUserForm, ManufacturerSearchForm, AutopartsSearchForm
+from shop.models import Manufacturer, AutoPart, Customer, Order
 
 
 def index(request):
@@ -39,10 +41,64 @@ class ManufacturerListView(generic.ListView):
     queryset = Manufacturer.objects.all()
     paginate_by = 10
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        name = self.request.GET.get("name", "")
+
+        context["manufacturer_search_form"] = ManufacturerSearchForm(initial={
+            "name": name
+        })
+
+        return context
+
+    def get_queryset(self):
+        form = ManufacturerSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return self.queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+        return self.queryset
+
 
 class AutopartListView(generic.ListView):
     model = AutoPart
     context_object_name = "autoparts_list"
     template_name = "shop/autoparts_list.html"
     queryset = AutoPart.objects.all()
-    paginate_by = 10
+    paginate_by = 9
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        part_name = self.request.GET.get("part_name", "")
+
+        context["autoparts_search_form"] = AutopartsSearchForm(initial={
+            "part_name": part_name
+        })
+
+        return context
+
+    def get_queryset(self):
+        form = AutopartsSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return self.queryset.filter(
+                part_name__icontains=form.cleaned_data["part_name"]
+            )
+        return self.queryset
+
+
+def add_item_to_order(request, pk):
+    pass
+    # if request.user.is_authenticated:
+    #     customer = Customer.objects.get(id=request.user.id)
+    #     part = AutoPart.objects.get(id=pk)
+    #
+    #     order = Order.objects.create()
+    #     order.auto_parts.add(part)
+    #     order.customers.add(customer)
+    #     order.save()
+    # else:
+    #     return HttpResponse("U must sign in")
+    #
+    # return render(request, "shop/autoparts_list.html")
