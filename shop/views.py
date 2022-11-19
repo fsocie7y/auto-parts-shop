@@ -1,7 +1,7 @@
+import sweetify
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View, generic
@@ -96,7 +96,13 @@ def add_item_to_order(request, pk):
         order, created = Order.objects.get_or_create(owner_id=customer.id)
         order.auto_parts.add(part)
     else:
-        pass
+        sweetify.warning(
+            request,
+            "Sorry",
+            text="You must be signed in",
+            persistent="Ok"
+        )
+        return redirect(reverse_lazy("shop:autopart-list"))
 
     return redirect(reverse_lazy("shop:autopart-list"))
 

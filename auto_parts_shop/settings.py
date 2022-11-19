@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "crispy_forms",
+    "sweetify",
     "shop",
 ]
 
@@ -54,6 +55,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = "auto_parts_shop.urls"
 
 LOGIN_REDIRECT_URL = "home/"
+
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 
 TEMPLATES = [
     {
@@ -112,7 +115,7 @@ AUTH_USER_MODEL = "shop.Customer"
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Kiev/Europe"
 
 USE_I18N = True
 
