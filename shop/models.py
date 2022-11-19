@@ -36,8 +36,8 @@ class Customer(AbstractUser):
 
 
 class Order(models.Model):
-    auto_parts = models.ManyToManyField(to=AutoPart, related_name="orders")
-    customers = models.ManyToManyField(to=Customer, related_name="orders")
+    auto_parts = models.ManyToManyField(to=AutoPart)
+    owner = models.ForeignKey(to=Customer, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"Order number: {self.id}"

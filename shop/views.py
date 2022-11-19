@@ -2,7 +2,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View, generic
 
@@ -89,16 +89,14 @@ class AutopartListView(generic.ListView):
 
 
 def add_item_to_order(request, pk):
-    pass
-    # if request.user.is_authenticated:
-    #     customer = Customer.objects.get(id=request.user.id)
-    #     part = AutoPart.objects.get(id=pk)
-    #
-    #     order = Order.objects.create()
-    #     order.auto_parts.add(part)
-    #     order.customers.add(customer)
-    #     order.save()
-    # else:
-    #     return HttpResponse("U must sign in")
-    #
-    # return render(request, "shop/autoparts_list.html")
+    if request.user.is_authenticated:
+        customer = Customer.objects.get(id=request.user.id)
+        part = AutoPart.objects.get(id=pk)
+
+        order, created = Order.objects.get_or_create(owner_id=customer.id)
+        order.auto_parts.add(part)
+    else:
+        pass
+
+    return redirect(reverse_lazy("shop:autopart-list"))
+

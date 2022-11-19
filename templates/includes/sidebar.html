@@ -1,13 +1,13 @@
-<ul class="sidebar-nav list-group">
+<ul class="sidebar-nav list-group sidebar">
   {% if user.is_authenticated %}
-    <li class="list-group-item">User: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></li>
-    <li class="list-group-item"><a href="{% url 'shop:logout'%}?next={{request.path}}">Logout</a></li>
+    <li class="list-group-item sidebar">User: <a class="link_color" href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></li>
+    <li class="list-group-item sidebar"><a class="link_color" href="{% url 'shop:logout'%}?next={{request.path}}">Logout</a></li>
   {% else %}
-    <li class="list-group-item"><a href="{% url 'shop:login'%}?next={{request.path}}">Sing In</a></li>
-    <li class="list-group-item"><a href="{% url 'shop:register'%}?next={{request.path}}">Sing Up</a></li>
+    <li class="list-group-item sidebar"><a class="link_color" href="{% url 'shop:login'%}?next={{request.path}}">Sing In</a></li>
+    <li class="list-group-item sidebar"><a class="link_color" href="{% url 'shop:register'%}?next={{request.path}}">Sing Up</a></li>
   {% endif %}
 
-  <li class="list-group-item"><a href="{% url 'shop:index' %}">Home</a></li>
-  <li class="list-group-item"><a href="{% url 'shop:manufacturer-list' %}">All manufacturers</a></li>
-  <li class="list-group-item"><a href="{% url 'shop:autopart-list' %}">All auto-parts</a></li>
+  <li class="list-group-item sidebar"><a class="link_color" href="{% url 'shop:index' %}">Home</a></li>
+  <li class="list-group-item sidebar"><a class="link_color" href="{% url 'shop:manufacturer-list' %}">All manufacturers</a></li>
+  <li class="list-group-item sidebar"><a class="link_color" href="{% url 'shop:autopart-list' %}">All auto-parts</a></li>
 </ul>

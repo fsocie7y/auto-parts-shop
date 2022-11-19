@@ -6,7 +6,7 @@ from shop.views import (
     SignUpView,
     ManufacturerListView,
     AutopartListView,
-    add_item_to_order
+    add_item_to_order,
 )
 
 urlpatterns = [
@@ -31,7 +31,7 @@ urlpatterns = [
         AutopartListView.as_view(),
         name="autopart-list",
     ),
-    path("auto-parts/<int:pk>/buy/", add_item_to_order, name="buy")
+    path("auto-parts/<int:pk>/buy/", add_item_to_order, name="buy"),
 ]
 
 app_name = "shop"
