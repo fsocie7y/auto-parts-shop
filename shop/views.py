@@ -44,7 +44,11 @@ class CustomerUpdateView(SweetifySuccessMixin, generic.UpdateView):
     model = Customer
     fields = ["username", "first_name", "last_name", "email"]
     success_message = "Your profile was updated successfully"
-    success_url = reverse_lazy("shop:index")
+
+    def get_success_url(self):
+        return reverse_lazy(
+            "shop:customer-detail", kwargs={"pk": self.object.pk}
+        )
 
 
 class ManufacturerListView(generic.ListView):

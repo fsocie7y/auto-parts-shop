@@ -17,10 +17,32 @@ body {
 .bc_color{
     background: #edeae5;
     opacity: 95%;
-    border-radius: 5px;
+    border-radius: 8px;
     margin-top: 7px;
 }
 
 .customer_detail{
     width: 50vh;
+}
+
+.count_img img{
+    height: 120px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.customers img{
+    background-color: white;
+}
+
+.info{
+    display: inline-block;
+}
+
+.home{
+    background-color: rgba(220, 220, 220, 0.9);
+    padding-left: 20px;
+    padding-top: 10px;
+    border-radius: 8px;
+    width: 70vh;
 }
