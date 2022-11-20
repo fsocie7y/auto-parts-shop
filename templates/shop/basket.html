@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
+  <h1 class="page_title">
     Your auto parts
   </h1>
   {% if order %}
-    <table class="table">
+    <table class="table bc_color table-borderless">
       <tr>
         <th>ID</th>
         <th>Name</th>
@@ -35,7 +35,7 @@
       {% endfor %}
     </table>
       <br>
-    <h4> Summary cost your parts: {{ summary_cost }}$</h4>
+    <h4 class="page_title"> Summary cost your parts: {{ summary_cost }}$</h4>
 
   {% else %}
       <p>There are no items in the basket.</p>

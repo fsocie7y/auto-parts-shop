@@ -2,12 +2,12 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>
+  <h1 class="page_title">
     Auto parts List for manufacturer: {{ manufacturer.name }}({{ manufacturer.country }})
   </h1>
 
   {% if autoparts_list %}
-    <table class="table">
+    <table class="table bc_color table-borderless">
       <tr>
         <th>ID</th>
         <th>Name</th>

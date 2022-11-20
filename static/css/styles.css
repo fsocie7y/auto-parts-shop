@@ -9,3 +9,18 @@ body {
 .link_color{
         color: black;
 }
+
+.page_title{
+    color: lavender;
+}
+
+.bc_color{
+    background: #edeae5;
+    opacity: 95%;
+    border-radius: 5px;
+    margin-top: 7px;
+}
+
+.customer_detail{
+    width: 50vh;
+}

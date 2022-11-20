@@ -2,15 +2,15 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>
+  <h1 class="page_title">
     Manufacturer List
   </h1>
     <form action="" method="get" class="form-inline">
         {{ manufacturer_search_form|crispy }}
-        <input type="submit" value="🔍✨" class="btn btn-info">
+        <input type="submit" value="🔍✨" class="btn btn-info" style="margin-left: 7px">
     </form>
   {% if manufacturer_list %}
-    <table class="table">
+    <table class="table bc_color table-borderless">
       <tr>
         <th>ID</th>
         <th>Name</th>

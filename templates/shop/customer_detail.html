@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
+  <h1 class="page_title">
     Username: {{ customer.username }}
     <a href="{% url 'shop:customer-update' pk=customer.id %}" class="btn btn-secondary link-to-page">
       Update your profile
     </a>
   </h1>
-
-  <p><strong>First name:</strong> {{ customer.first_name }}</p>
-  <p><strong>Last name:</strong> {{ customer.last_name }}</p>
-  <p><strong>Email:</strong> {{ customer.email }}</p>
-  <p><strong>Is staff:</strong> {{ customer.is_staff }}</p>
+  <div class="bc_color customer_detail">
+    <p><strong>First name:</strong> {{ customer.first_name }}</p>
+    <p><strong>Last name:</strong> {{ customer.last_name }}</p>
+    <p><strong>Email:</strong> {{ customer.email }}</p>
+    <p><strong>Is staff:</strong> {{ customer.is_staff }}</p>
+  </div>
 
 {% endblock %}
