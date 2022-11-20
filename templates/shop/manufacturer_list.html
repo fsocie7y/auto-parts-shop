@@ -24,7 +24,7 @@
               {{ manufacturer.id }}
           </td>
           <td>
-              {{ manufacturer.name }}
+              <a class="link_color" href="{% url 'shop:manufacturer-detail' pk=manufacturer.id%}">{{ manufacturer.name }}</a>
           </td>
           <td>
               {{ manufacturer.country }}
@@ -39,6 +39,7 @@
         </tr>
       {% endfor %}
     </table>
+
 
   {% else %}
       <p>There are no manufacturers in the service.</p>
