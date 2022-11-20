@@ -35,7 +35,7 @@
       {% endfor %}
     </table>
   {% else %}
-      <p>There are no items in the shop.</p>
+      <p class="page_title">There are no items in the shop.</p>
   {% endif %}
     <a class="btn btn-secondary" href="{% url 'shop:manufacturer-list' %}">Back</a>
 {% endblock %}

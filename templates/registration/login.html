@@ -3,7 +3,7 @@
 {% block content %}
 
 {% load crispy_forms_filters %}
-<div>
+<div class="container py-5 bc_color" style="width: 80vh">
     <h1>Login</h1>
         <form method="post" action="{% url 'shop:login' %}" novalidate>
           {% csrf_token %}

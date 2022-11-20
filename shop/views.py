@@ -11,7 +11,16 @@ from shop.models import Manufacturer, AutoPart, Customer, Order
 
 def index(request):
     """View function for the home page of the site."""
-    return render(request, "shop/index.html")
+    manufacturer_count = Manufacturer.objects.all().count()
+    autoparts_count = AutoPart.objects.all().count()
+    users_count = Customer.objects.all().count()
+
+    context = {
+        "manufacturer_count": manufacturer_count,
+        "autoparts_count": autoparts_count,
+        "users_count": users_count,
+    }
+    return render(request, "shop/index.html", context=context)
 
 
 class LogoutView(View):

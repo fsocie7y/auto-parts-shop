@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p>Logged out!</p>
+<p class="page_title">Logged out!</p>
 
-<a href="{% url 'shop:login'%}">Click here to login again.</a>
-<a href="{% url 'shop:index'%}">Back to home page.</a>
+<a class="page_title" href="{% url 'shop:login'%}">Click here to login again.</a>
+<a class="page_title" href="{% url 'shop:index'%}">Back to home page.</a>
 {% endblock %}
