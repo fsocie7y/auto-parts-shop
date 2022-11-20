@@ -6,6 +6,11 @@
     <a href="{% url 'shop:customer-update' pk=customer.id %}" class="btn btn-secondary link-to-page">
       Update your profile
     </a>
+    {% if user.is_staff %}
+    <a href="/admin/" class="btn btn-secondary link-to-page">
+      Go to admin page
+    </a>
+    {% endif %}
   </h1>
   <div class="bc_color customer_detail">
     <p><strong>First name:</strong> {{ customer.first_name }}</p>

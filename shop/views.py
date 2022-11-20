@@ -157,7 +157,7 @@ def remove_part_from_order(request, pk):
 def basket(request):
     if request.user.is_authenticated:
         owner_id = request.user.id
-        order = Order.objects.get(owner_id=owner_id)
+        order, created = Order.objects.get_or_create(owner_id=owner_id)
         summary_cost = sum([part.price for part in order.auto_parts.all()])
         context = {
             "order": order,
