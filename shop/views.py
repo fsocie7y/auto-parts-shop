@@ -1,6 +1,5 @@
 import sweetify
 from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -106,3 +105,22 @@ def add_item_to_order(request, pk):
 
     return redirect(reverse_lazy("shop:autopart-list"))
 
+
+def basket(request):
+    if request.user.is_authenticated:
+        owner_id = request.user.id
+        order = Order.objects.get(owner_id=owner_id)
+        summary_cost = sum([part.price for part in order.auto_parts.all()])
+        context = {
+            "order":  order,
+            "summary_cost": summary_cost
+        }
+        return render(request, "shop/basket.html", context=context)
+    else:
+        sweetify.warning(
+            request,
+            "Sorry",
+            text="You must be signed in",
+            persistent="Ok"
+        )
+        return redirect(reverse_lazy("shop:login"))

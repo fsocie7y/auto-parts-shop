@@ -7,6 +7,7 @@ from shop.views import (
     ManufacturerListView,
     AutopartListView,
     add_item_to_order,
+    basket,
 )
 
 urlpatterns = [
@@ -32,6 +33,7 @@ urlpatterns = [
         name="autopart-list",
     ),
     path("auto-parts/<int:pk>/buy/", add_item_to_order, name="buy"),
+    path("basket/", basket, name="basket"),
 ]
 
 app_name = "shop"
