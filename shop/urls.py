@@ -23,7 +23,7 @@ urlpatterns = [
             template_name='registration/login.html',
             redirect_authenticated_user=True
         ),
-        name='login'
+        name="login"
     ),
     path("logout/", LogoutView.as_view(), name='logout'),
     path("register/", SignUpView.as_view(), name="register"),
