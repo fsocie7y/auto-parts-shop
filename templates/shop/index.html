@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="home">
+        <h1>Auto-parts Shop Home</h1>
+        <hr>
+        <h3 style="margin-top: 5px">
+            We better than other web-store because:
+        </h3>
+        <div class="count_img">
+            <img src="{% static 'images/manufacturer.jpg' %}" alt="manufacturer">
+            <div class="info">We work with {{ manufacturer_count }} manufacturers</div>
+        </div>
+        <div class="count_img">
+            <img src="{% static 'images/autoparts.png' %}" alt="autoparts">
+            <div class="info">We already have {{ autoparts_count }}pcs auto-parts</div>
+        </div>
+        <div class="count_img customers">
+            <img src="{% static 'images/customers.png' %}" alt="customers">
+            <div class="info">We have {{ users_count }} users registered</div>
+        </div>
+    </div>
+{% endblock %}

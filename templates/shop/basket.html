@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="page_title">
+    Your auto parts
+  </h1>
+  {% if order %}
+    <table class="table bc_color table-borderless">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Manufacturer</th>
+        <th></th>
+      </tr>
+
+      {% for autopart in order.auto_parts.all %}
+        <tr>
+          <td>
+              {{ autopart.id }}
+          </td>
+          <td>
+              {{ autopart.part_name }}
+          </td>
+          <td>
+              {{ autopart.price }}$
+          </td>
+          <td>
+              {{ autopart.manufacturer.name }}
+          </td>
+          <td>
+              <a class="btn btn-danger" href="{% url 'shop:remove' pk=autopart.id %}">Remove</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+      <br>
+    <h4 class="page_title"> Summary cost your parts: {{ summary_cost }}$</h4>
+
+  {% else %}
+      <p>There are no items in the basket.</p>
+  {% endif %}
+{% endblock %}

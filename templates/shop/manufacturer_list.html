@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1 class="page_title">
+    Manufacturer List
+  </h1>
+    <form action="" method="get" class="form-inline">
+        {{ manufacturer_search_form|crispy }}
+        <input type="submit" value="🔍✨" class="btn btn-info" style="margin-left: 7px">
+    </form>
+  {% if manufacturer_list %}
+    <table class="table bc_color table-borderless">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Amount parts</th>
+      </tr>
+
+      {% for manufacturer in manufacturer_list %}
+        <tr>
+          <td>
+              {{ manufacturer.id }}
+          </td>
+          <td>
+              <a class="link_color" href="{% url 'shop:manufacturer-detail' pk=manufacturer.id%}">{{ manufacturer.name }}</a>
+          </td>
+          <td>
+              {{ manufacturer.country }}
+          </td>
+          <td>
+              {% if manufacturer.autopart_set.count > 0 %}
+              {{ manufacturer.autopart_set.count }}
+              {% else %}
+              Haven`t auto-parts yet...
+              {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p class="page_title">There are no manufacturers in the service.</p>
+  {% endif %}
+{% endblock %}

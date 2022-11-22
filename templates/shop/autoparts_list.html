@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1 class="page_title">
+    Auto parts List
+  </h1>
+    <form action="" method="get" class="form-inline">
+        {{ autoparts_search_form|crispy }}
+        <input type="submit" value="🔍✨" class="btn btn-info" style="margin-left: 7px">
+    </form>
+  {% if autoparts_list %}
+    <table class="table bc_color table-borderless">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Manufacturer</th>
+        <th></th>
+      </tr>
+
+      {% for autopart in autoparts_list %}
+        <tr>
+          <td>
+              {{ autopart.id }}
+          </td>
+          <td>
+              {{ autopart.part_name }}
+          </td>
+          <td>
+              {{ autopart.price }}$
+          </td>
+          <td>
+              {{ autopart.manufacturer.name }}
+          </td>
+          <td>
+            <a href="{% url 'shop:buy' pk=autopart.id %}" class="btn btn-success link-to-page">
+            Buy
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p class="page_title">There are no items in the shop.</p>
+  {% endif %}
+{% endblock %}
