@@ -3,7 +3,7 @@ Django project for searching and buying auto-parts
 
 ## Check it out!
 
-[Auto-parts-shop Project developed to Render](PASTE_LINK_HEARE)
+[Auto-parts-shop Project developed to Render](https://auto-parts-shop.onrender.com)
 
 ## Installation
 
